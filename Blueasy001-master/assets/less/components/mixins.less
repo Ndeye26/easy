@@ -1,0 +1,78 @@
+//use http://www.font2web.com to generate all font formats
+.add-font(@font-url, @font-name, @font-weight: normal, @font-style: normal) {
+  font-family: @font-name;
+  src: url('@{font-folder}@{font-url}.eot'); // IE9 Compat Modes 
+  src: url('@{font-folder}@{font-url}.eot?#iefix') format('embedded-opentype'), // IE6-IE8 
+  url('@{font-folder}@{font-url}.woff') format('woff'), // Pretty Modern Browsers 
+  url('@{font-folder}@{font-url}.ttf') format('truetype'), // Safari, Android, iOS 
+  url('@{font-folder}@{font-url}.svg#@{font-name}') format('svg'); // Legacy iOS  
+  font-weight: @font-weight;
+  font-style: @font-style;
+}
+
+.transition(@prop: all, @time: 0.3s, @ease: ease-in-out) {
+  transition: @prop @time @ease;
+}
+
+.bg-img(@img, @pos:center, @att:scroll) {
+	background-image: url('@{img-folder}@{img}');
+	background-position: @pos;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: scroll;	
+}
+
+.btn-univ(@font:1em, @padding_t_b:1.07em, @padding_l_r:2.856em, @color:#353f46, @colorHover:#fff) {
+  display: inline-block;
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: 600;
+  color: @color;
+  border: 2px solid @color;
+  padding: @padding_t_b @padding_l_r;
+  transition: all .3s ease-in-out;
+  font-size: @font;
+
+  &:hover {
+    text-decoration: none;
+    color: @colorHover;
+    border-color: @colorHover;
+  }
+}
+
+
+
+.nav-adaptive-styles(@colorOfLi:@overlay, @top:100%, @colorOfBorder:@overlay) {
+
+  .site-nav, .tab-wrapper {
+      position: relative;
+    }
+
+    .site-nav .horizontal-nav, .tab-menu {
+      position: absolute;
+      top: @top;
+      left: 0;
+      background-color: @colorOfLi;
+      width: 100%;
+      z-index: 1;
+
+      li {
+        width: 100%;
+        display: block;
+        margin-left: 0;
+        text-align: center;
+        border-bottom: 1px solid lighten(@colorOfBorder, 10%);
+      }
+
+      a {
+        display: inline-block;
+        padding: 20px 30px;
+        width: 100%;
+
+        &.active {
+          border-color: transparent;
+        }
+      }
+    }
+
+}
